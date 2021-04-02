@@ -1,0 +1,9 @@
+$color-light-main: #21e6c1;
+$color-light-second: #278ea5;
+$color-dark-main: #40514e;
+$color-dark-second: #3e3636;
+$shadow-light: rgba($color-light-main, .1);
+$shadow-dark: rgba($color-dark-main, .1);
+$portrait-image: url(../assets/portrait.jpg);
+
+@mixin easeIn { transition: all .5s ease-in;}

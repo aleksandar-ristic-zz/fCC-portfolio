@@ -1,0 +1,33 @@
+header {
+    margin: 0 auto;
+    padding: 0 5rem;
+    max-width: 1400px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: 700;
+}
+
+.menu-btn {
+    display: none;
+}
+
+.menu-nav {
+    display: flex;
+
+    .nav-item {
+        margin-right: .5rem;
+
+        &.current {
+            a.nav-link {
+                color: lighten($color-light-second, 15);
+            }
+            
+        }
+    }
+}
+

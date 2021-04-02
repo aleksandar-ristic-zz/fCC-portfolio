@@ -1,0 +1,122 @@
+@import 'config';
+@import 'utils';
+@import 'menu';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+/* *** Base styles *** */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans', sans-serif;
+    color: $color-light-main;
+    font-size: 16px;
+    background-color: $color-dark-second;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: $color-light-main;
+
+    &:visited {
+        color: $color-light-second;;
+    }
+}
+
+p {
+    max-width: 40rem;
+    line-height: 1.5;
+}
+
+/* *** Welcome *** */
+
+#welcome-section {
+    height: 100vh;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+
+    .img-wrapper {
+        .portrait {
+            background: $portrait-image;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    }
+}
+
+#skills-section {
+    background-color: darken($color-dark-second, 5);
+
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+
+        .card {
+            @include easeIn;
+
+            &:hover {
+                transform: translateY(-10px);
+                box-shadow: 5px 5px 10px 15px $shadow-light;
+            }
+            
+        }
+    }
+}
+
+#technologies-section {
+    .card-container {
+        min-width: 80vw;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        justify-items: center;
+        gap: 1.5rem;
+
+        .card {
+            font-size: 2.5rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            @include easeIn;
+
+            &:hover {
+                color: $color-dark-second;
+                background-color: $color-light-main;
+            }
+        }
+    }    
+}
+
+footer {
+    padding: 1.5rem;
+    background-color: darken($color-dark-second, 25);
+
+    .icons {
+        margin-bottom: 1rem;
+        a {
+            color: $color-light-main;
+            margin-left: 1rem;
+            @include easeIn;
+
+            &:hover {
+                transform: translateY(-5px);
+            }
+        }
+    }
+
+    .footer-text {
+        font-size: .8rem;
+    }
+}
