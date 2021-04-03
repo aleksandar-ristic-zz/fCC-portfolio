@@ -1,7 +1,6 @@
 header {
     margin: 0 auto;
     padding: 0 5rem;
-    max-width: 1400px;
 
     display: flex;
     align-items: center;
@@ -24,7 +23,7 @@ header {
 
         &.current {
             a.nav-link {
-                color: lighten($color-light-second, 15);
+                color: lighten($color-light-main, 25);
             }
             
         }
