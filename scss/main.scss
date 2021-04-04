@@ -19,7 +19,6 @@ body {
     padding: 0;
     font-family: 'Noto Sans', sans-serif;
     color: $color-light-main;
-
     background-color: $color-dark-second;
 }
 
@@ -75,33 +74,7 @@ img {
             move 12s ease-in-out infinite;
             z-index: -1;
         }
-    }
-
-    @media (max-width: 968px) {
-        grid-template-columns: 1fr;
-
-        .img-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            .portrait,
-            .portrait-bg {
-    
-                width: 30%;
-            }
-        }
-
-        a {
-            align-self: center;
-        }
-    }
-
-    @media (max-width: 500px) {
-        .img-wrapper {
-            display: none;
-        }
-    }
+    }  
 }
 
 /* *** Skills *** */
@@ -120,13 +93,6 @@ img {
                 transform: translateY(-10px);
                 box-shadow: 5px 5px 10px 15px $shadow-light;
             }
-            
-        }
-    }
-
-    @media (max-width: 720px) {
-        .card-container {
-            grid-template-columns: 1fr;
         }
     }
 }
@@ -148,7 +114,6 @@ img {
             @include easeIn;
 
             i { font-size: 5rem}
-            
 
             &:nth-of-type(1) {i{ color: #E34F26;}}
             &:nth-of-type(2) {i{ color: #2965F1;}}
@@ -198,23 +163,6 @@ img {
             }
         }
     }
-
-    @media (max-width: 1100px) {
-        .about-wrapper {
-            grid-template-columns: 1fr;
-
-            .text-wrapper {
-                max-width: 100%;
-            }
-
-            &:nth-of-type(2) {
-                
-                .img-wrapper{
-                    order: 4;
-                }
-            } 
-        }
-    }
 }
 
 /* *** Experience *** */
@@ -242,8 +190,6 @@ img {
                 place-items: center;
                 transform: translateY(-50%);
             }
-
-            
 
             &:nth-of-type(odd) {
                 margin-right: 2rem;
@@ -320,32 +266,6 @@ img {
         'e e e e f f f f'
         'e e e e f f f f'
         'e e e e f f f f';
-
-        @media (max-width: 1075px) {
-            width: 100%;
-            grid-template-rows: repeat(8, 5vw);
-            grid-template-areas: 
-            'a a a a b b b b'
-            'a a a a b b b b'
-            'd d d d c c c c'
-            'd d d d c c c c'
-            'd d d d c c c c'
-            'e e e e c c c c'
-            'e e e e f f f f'
-            'e e e e f f f f';
-        }
-
-        @media (max-width: 768px) {
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(6, 25vh);
-            grid-template-areas: 
-            'a'
-            'b'
-            'c'
-            'd'
-            'e'
-            'f';
-        }
     }
 
     .project:nth-of-type(1) {grid-area: a;}
@@ -431,15 +351,6 @@ img {
                 z-index: 5;
             }
         }
-
-        @media (max-width: 1775px) {
-                .project-info {
-                    p {
-                        align-self: center;
-                        display: none;
-                    }
-            }
-        }
     }
 }
 
@@ -487,22 +398,6 @@ img {
                 transform: translateX(50%);
             }
         }
-    }
-
-    @media (max-width:768px) {
-        .company-main-wrapper {
-
-            .companies-wrapper {
-
-               .companies-slide {
-                .company {
-                    i {font-size: 5rem;}
-                }
-               }
-               
-            }
-        }
-            
     }
 }
 
@@ -614,42 +509,6 @@ img {
                 }
             }
         }
-
-        @media (max-width: 1068px) {
-            flex-direction: column;
-
-            .contact-form {
-                width: 100%;
-                max-width: 90%;
-                padding: 2rem 2rem 1.4rem;
-
-                form {
-                    .row {
-                        flex-direction: column;
-    
-                        .input50,
-                        .input100 {
-                            width: 100%;
-                            margin: 0;
-                        }
-                    }
-                }
-            }
-
-            .contact-info {
-                width: 100%;
-                max-width: 90%;
-                margin-top: 1.5rem;
-                padding: 2rem 2rem 1.4rem;
-            }
-        }
-
-        @media (max-width: 500px) {
-            .contact-form,
-            .contact-info {
-                max-width: 100%;
-            }
-        }
     }   
 }
 
@@ -686,7 +545,6 @@ footer {
 }
 
 /* *** Animation *** */
-
 @keyframes morph {
     0% {
               border-radius:  28% 72% 15% 85% / 90% 22% 78% 10%;
@@ -742,3 +600,5 @@ footer {
         transform: rotateZ(360deg) scale(1.05);
     }
 }
+
+@import 'mobile';
