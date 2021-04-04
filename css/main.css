@@ -87,6 +87,7 @@
 
 .heading-wrapper {
   margin-bottom: 5rem;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -106,8 +107,13 @@ section {
   padding: 5rem;
 }
 
+@media (max-width: 768px) {
+  section {
+    padding: 1rem;
+  }
+}
+
 header {
-  position: fixed;
   width: 100%;
   margin: 0 auto;
   padding: 0 5rem;
@@ -116,30 +122,71 @@ header {
   justify-content: space-between;
 }
 
-.logo {
+header .logo {
+  position: relative;
   font-weight: 700;
   font-size: 1.5rem;
+  z-index: 5;
 }
 
-.menu-btn {
+header .menu-btn {
   display: none;
 }
 
-.menu-nav {
+header .menu-nav {
   display: flex;
 }
 
-.menu-nav .nav-item {
+header .menu-nav .nav-item {
   margin-right: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
-.menu-nav .nav-item.current a.nav-link {
+header .menu-nav .nav-item.current a.nav-link {
   color: #94f3e1;
+  border-bottom: 1px solid #278ea5;
 }
 
-.menu-nav .nav-item:nth-last-of-type() {
+header .menu-nav .nav-item:nth-last-of-type() {
   margin-right: 0;
+}
+
+@media (max-width: 768px) {
+  header {
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+  }
+  header .menu-btn {
+    display: block;
+    font-size: 1.5rem;
+    z-index: 5;
+  }
+  header .menu {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 5rem;
+    left: 0;
+    z-index: 3;
+    transform: translateY(-100%);
+    transition: all .5s ease-in;
+  }
+  header .menu::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    background: rgba(62, 54, 54, 0.9);
+    z-index: 2;
+  }
+  header .menu .menu-nav {
+    display: flex;
+    justify-content: center;
+  }
+  header .menu.open {
+    transform: translateY(0);
+  }
 }
 
 /* *** Base styles *** */
@@ -205,15 +252,39 @@ img {
 
 #welcome-section .img-wrapper .portrait-bg {
   position: absolute;
-  top: -5%;
+  top: 0;
   right: 15%;
   width: 60%;
-  height: 70vh;
+  height: 75%;
   background-image: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
   border-radius: 0% 100% 0% 100% / 100% 0% 100% 0%;
   transition: all 1s ease-in-out;
   animation: morph 8s ease-in-out infinite, move 12s ease-in-out infinite;
   z-index: -1;
+}
+
+@media (max-width: 968px) {
+  #welcome-section {
+    grid-template-columns: 1fr;
+  }
+  #welcome-section .img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #welcome-section .img-wrapper .portrait,
+  #welcome-section .img-wrapper .portrait-bg {
+    width: 30%;
+  }
+  #welcome-section a {
+    align-self: center;
+  }
+}
+
+@media (max-width: 500px) {
+  #welcome-section .img-wrapper {
+    display: none;
+  }
 }
 
 /* *** Skills *** */
@@ -233,6 +304,12 @@ img {
 #skills-section .card-container .card:hover {
   transform: translateY(-10px);
   box-shadow: 5px 5px 10px 15px rgba(33, 230, 193, 0.1);
+}
+
+@media (max-width: 720px) {
+  #skills-section .card-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* *** Technologies *** */
@@ -328,7 +405,21 @@ img {
 }
 
 #about-section .about-wrapper:first-of-type img {
-  justify-self: flex-end;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1100px) {
+  #about-section .about-wrapper {
+    grid-template-columns: 1fr;
+  }
+  #about-section .about-wrapper .text-wrapper {
+    max-width: 100%;
+  }
+  #about-section .about-wrapper:nth-of-type(2) .img-wrapper {
+    order: 4;
+  }
 }
 
 /* *** Experience *** */
@@ -423,6 +514,22 @@ img {
   grid-template-areas: 'a a b b c c c c' 'a a b b c c c c' 'd d d d c c c c' 'd d d d c c c c' 'd d d d c c c c' 'e e e e f f f f' 'e e e e f f f f' 'e e e e f f f f';
 }
 
+@media (max-width: 1075px) {
+  #projects-section .projects-wrapper {
+    width: 100%;
+    grid-template-rows: repeat(8, 5vw);
+    grid-template-areas: 'a a a a b b b b' 'a a a a b b b b' 'd d d d c c c c' 'd d d d c c c c' 'd d d d c c c c' 'e e e e c c c c' 'e e e e f f f f' 'e e e e f f f f';
+  }
+}
+
+@media (max-width: 768px) {
+  #projects-section .projects-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 25vh);
+    grid-template-areas: 'a' 'b' 'c' 'd' 'e' 'f';
+  }
+}
+
 #projects-section .project:nth-of-type(1) {
   grid-area: a;
 }
@@ -460,6 +567,7 @@ img {
 }
 
 #projects-section .project .project-info {
+  overflow: hidden;
   position: absolute;
   top: 0;
   left: 0;
@@ -488,11 +596,9 @@ img {
 }
 
 #projects-section .project .project-info ul {
+  padding: 0;
   display: flex;
-}
-
-#projects-section .project .project-info ul li {
-  margin-left: 1rem;
+  gap: 1rem;
 }
 
 #projects-section .project .project-info ul li a {
@@ -504,19 +610,30 @@ img {
   color: #070707;
 }
 
-#projects-section .project:hover .img-wrapper img {
+#projects-section .project:hover .img-wrapper, #projects-section .project:active .img-wrapper {
+  overflow: hidden;
+}
+
+#projects-section .project:hover .img-wrapper img, #projects-section .project:active .img-wrapper img {
   opacity: .5;
   transform: translateX(30%);
 }
 
-#projects-section .project:hover .project-info {
+#projects-section .project:hover .project-info, #projects-section .project:active .project-info {
   transform: perspective(2000px) rotateY(0deg);
+  z-index: 5;
+}
+
+@media (max-width: 1775px) {
+  #projects-section .project .project-info p {
+    align-self: center;
+    display: none;
+  }
 }
 
 /* *** Companies *** */
 #companies .companies-wrapper {
   width: 100%;
-  max-width: 80vw;
   margin: 0 auto;
   padding: 5rem;
   overflow: hidden;
@@ -592,6 +709,12 @@ img {
 #companies .companies-wrapper .companies-slide:nth-of-type(2) {
   z-index: 0;
   transform: translateX(50%);
+}
+
+@media (max-width: 768px) {
+  #companies .company-main-wrapper .companies-wrapper .companies-slide .company i {
+    font-size: 5rem;
+  }
 }
 
 /* *** Contact *** */
@@ -707,6 +830,7 @@ img {
   }
   #contact-section .contact-wrapper .contact-form {
     width: 100%;
+    max-width: 90%;
     padding: 2rem 2rem 1.4rem;
   }
   #contact-section .contact-wrapper .contact-form form .row {
@@ -719,8 +843,16 @@ img {
   }
   #contact-section .contact-wrapper .contact-info {
     width: 100%;
+    max-width: 90%;
     margin-top: 1.5rem;
     padding: 2rem 2rem 1.4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  #contact-section .contact-wrapper .contact-form,
+  #contact-section .contact-wrapper .contact-info {
+    max-width: 100%;
   }
 }
 
@@ -742,7 +874,7 @@ footer .icons a i {
   transition: all .5s ease-in;
 }
 
-footer .icons a:hover i {
+footer .icons a:hover i, footer .icons a:active i {
   transform: translateY(-5px);
 }
 

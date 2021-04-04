@@ -64,16 +64,42 @@ img {
 
         .portrait-bg {
             position: absolute;
-            top: -5%;
+            top: 0;
             right: 15%;
             width: 60%;
-            height: 70vh;
+            height: 75%;
             background-image: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
             border-radius: 0% 100% 0% 100% / 100% 0% 100% 0%;
             transition: all 1s ease-in-out;
             animation: morph 8s ease-in-out infinite,
             move 12s ease-in-out infinite;
             z-index: -1;
+        }
+    }
+
+    @media (max-width: 968px) {
+        grid-template-columns: 1fr;
+
+        .img-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .portrait,
+            .portrait-bg {
+    
+                width: 30%;
+            }
+        }
+
+        a {
+            align-self: center;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .img-wrapper {
+            display: none;
         }
     }
 }
@@ -94,6 +120,12 @@ img {
                 box-shadow: 5px 5px 10px 15px $shadow-light;
             }
             
+        }
+    }
+
+    @media (max-width: 720px) {
+        .card-container {
+            grid-template-columns: 1fr;
         }
     }
 }
@@ -162,8 +194,27 @@ img {
 
         &:first-of-type {
             img {
-                justify-self: flex-end;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
+        }
+    }
+
+    @media (max-width: 1100px) {
+        .about-wrapper {
+            grid-template-columns: 1fr;
+
+            .text-wrapper {
+                max-width: 100%;
+            }
+
+            &:nth-of-type(2) {
+                
+                .img-wrapper{
+                    order: 4;
+                }
+            } 
         }
     }
 }
@@ -271,6 +322,32 @@ img {
         'e e e e f f f f'
         'e e e e f f f f'
         'e e e e f f f f';
+
+        @media (max-width: 1075px) {
+            width: 100%;
+            grid-template-rows: repeat(8, 5vw);
+            grid-template-areas: 
+            'a a a a b b b b'
+            'a a a a b b b b'
+            'd d d d c c c c'
+            'd d d d c c c c'
+            'd d d d c c c c'
+            'e e e e c c c c'
+            'e e e e f f f f'
+            'e e e e f f f f';
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(6, 25vh);
+            grid-template-areas: 
+            'a'
+            'b'
+            'c'
+            'd'
+            'e'
+            'f';
+        }
     }
 
     .project:nth-of-type(1) {grid-area: a;}
@@ -294,6 +371,7 @@ img {
         }
 
         .project-info {
+            overflow: hidden;
             position: absolute;
             top: 0;
             left: 0;
@@ -321,11 +399,11 @@ img {
             }
 
             ul {
+                padding: 0;
                 display: flex;
+                gap: 1rem;
 
                 li {
-                    margin-left: 1rem;
-                    
                     a {
                         font-size: 1rem;
                         color: $color-dark-second;
@@ -340,8 +418,10 @@ img {
             }
         }
 
-        &:hover {
+        &:hover,
+        &:active {
             .img-wrapper {
+                overflow: hidden;
                 img {
                     opacity: .5;
                     transform: translateX(30%);
@@ -350,6 +430,16 @@ img {
 
             .project-info {
                 transform: perspective(2000px) rotateY(0deg);
+                z-index: 5;
+            }
+        }
+
+        @media (max-width: 1775px) {
+                .project-info {
+                    p {
+                        align-self: center;
+                        display: none;
+                    }
             }
         }
     }
@@ -359,7 +449,6 @@ img {
 #companies {
     .companies-wrapper {
         width: 100%;
-        max-width: 80vw;
         margin: 0 auto;
         padding: 5rem;
         overflow: hidden;
@@ -400,6 +489,22 @@ img {
                 transform: translateX(50%);
             }
         }
+    }
+
+    @media (max-width:768px) {
+        .company-main-wrapper {
+
+            .companies-wrapper {
+
+               .companies-slide {
+                .company {
+                    i {font-size: 5rem;}
+                }
+               }
+               
+            }
+        }
+            
     }
 }
 
@@ -517,10 +622,10 @@ img {
 
             .contact-form {
                 width: 100%;
+                max-width: 90%;
                 padding: 2rem 2rem 1.4rem;
 
                 form {
-
                     .row {
                         flex-direction: column;
     
@@ -535,8 +640,16 @@ img {
 
             .contact-info {
                 width: 100%;
+                max-width: 90%;
                 margin-top: 1.5rem;
                 padding: 2rem 2rem 1.4rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .contact-form,
+            .contact-info {
+                max-width: 100%;
             }
         }
     }   
@@ -556,7 +669,8 @@ footer {
                 @include easeIn;
             }
 
-            &:hover {
+            &:hover,
+            &:active {
                 i {
                     transform: translateY(-5px);
                 }

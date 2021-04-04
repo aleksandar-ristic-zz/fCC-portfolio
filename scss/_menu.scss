@@ -1,5 +1,4 @@
 header {
-    position: fixed;
     width: 100%;
     margin: 0 auto;
     padding: 0 5rem;
@@ -7,34 +6,81 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
 
-.logo {
-    font-weight: 700;
-    font-size: 1.5rem;
-}
 
-.menu-btn {
-    display: none;
-}
-
-.menu-nav {
-    display: flex;
-
-    .nav-item {
-        margin-right: 1rem;
-        font-size: 1.2rem;
-
-        &.current {
-            a.nav-link {
-                color: lighten($color-light-main, 25);
+    .logo {
+        position: relative;
+        font-weight: 700;
+        font-size: 1.5rem;
+        z-index: 5;
+    }
+    
+    .menu-btn {
+        display: none;
+    }
+    
+    .menu-nav {
+        display: flex;
+    
+        .nav-item {
+            margin-right: 1rem;
+            font-size: 1.4rem;
+    
+            &.current {
+                a.nav-link {
+                    color: lighten($color-light-main, 25);
+                    border-bottom: 1px solid $color-light-second;
+                }
+                
             }
-            
+    
+            &:nth-last-of-type() {
+                margin-right: 0;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+        margin: 0;
+        padding: 1rem;
+
+        .menu-btn {
+            display: block;
+            font-size: 1.5rem;
+            z-index: 5;
         }
 
-        &:nth-last-of-type() {
-            margin-right: 0;
+        .menu {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 5rem;
+            left: 0;
+            z-index: 3;
+            transform: translateY(-100%);
+            @include easeIn;
+
+            &::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 10%;
+                background: rgba($color-dark-second, .9);
+                z-index: 2;
+            }
+
+            .menu-nav {
+                display: flex;
+                justify-content: center;
+            }
+
+            &.open {
+                transform: translateY(0);
+            }
         }
     }
 }
+
+
 
