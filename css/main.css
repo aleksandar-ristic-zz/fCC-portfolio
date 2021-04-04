@@ -126,7 +126,7 @@ header .logo {
   position: relative;
   font-weight: 700;
   font-size: 1.5rem;
-  z-index: 5;
+  z-index: 9;
 }
 
 header .menu-btn {
@@ -151,41 +151,43 @@ header .menu-nav .nav-item:nth-last-of-type() {
   margin-right: 0;
 }
 
+header.fixed-header {
+  position: fixed;
+  background-color: rgba(62, 54, 54, 0.9);
+  border-bottom: 1px solid #21e6c1;
+  z-index: 5;
+}
+
 @media (max-width: 768px) {
-  header {
+  header header {
     width: 100%;
     margin: 0;
     padding: 1rem;
   }
-  header .menu-btn {
+  header header .menu-btn {
     display: block;
     font-size: 1.5rem;
-    z-index: 5;
+    z-index: 10;
   }
-  header .menu {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 5rem;
-    left: 0;
-    z-index: 3;
-    transform: translateY(-100%);
-    transition: all .5s ease-in;
-  }
-  header .menu::after {
-    content: '';
-    position: absolute;
+  header header .menu {
+    position: fixed;
     width: 100%;
     height: 10%;
-    background: rgba(62, 54, 54, 0.9);
-    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: rgba(62, 54, 54, 0.9);
+    z-index: 9;
+    transform: translateY(-300%);
+    transition: all .5s ease-in;
   }
-  header .menu .menu-nav {
+  header header .menu .menu-nav {
+    position: relative;
     display: flex;
     justify-content: center;
+    z-index: 5;
   }
-  header .menu.open {
-    transform: translateY(0);
+  header header .menu.open {
+    transform: translateY(90%);
   }
 }
 
@@ -301,7 +303,7 @@ img {
   transition: all .5s ease-in;
 }
 
-#skills-section .card-container .card:hover {
+#skills-section .card-container .card:hover, #skills-section .card-container .card:active {
   transform: translateY(-10px);
   box-shadow: 5px 5px 10px 15px rgba(33, 230, 193, 0.1);
 }
@@ -324,17 +326,13 @@ img {
   font-size: 2.5rem;
   padding: 1rem;
   box-shadow: none;
+  color: #3e3636;
+  transform-origin: center;
   transition: all .5s ease-in;
 }
 
 #technologies-section .card-container .card i {
   font-size: 5rem;
-}
-
-#technologies-section .card-container .card:hover {
-  color: #3e3636;
-  transform: rotateZ(10deg) scale(1.02);
-  transform-origin: right;
 }
 
 #technologies-section .card-container .card:nth-of-type(1) i {
@@ -923,5 +921,14 @@ footer .footer-text {
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes jumpy {
+  from {
+    transform: rotateZ(0) scale(1);
+  }
+  to {
+    transform: rotateZ(360deg) scale(1.05);
   }
 }

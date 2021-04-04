@@ -115,7 +115,8 @@ img {
         .card {
             @include easeIn;
 
-            &:hover {
+            &:hover,
+            &:active {
                 transform: translateY(-10px);
                 box-shadow: 5px 5px 10px 15px $shadow-light;
             }
@@ -142,15 +143,12 @@ img {
             font-size: 2.5rem;
             padding: 1rem;
             box-shadow: none;
+            color: $color-dark-second;
+            transform-origin: center;
             @include easeIn;
 
             i { font-size: 5rem}
-
-            &:hover {
-                color: $color-dark-second;
-                transform: rotateZ(10deg) scale(1.02);
-                transform-origin: right;
-            }
+            
 
             &:nth-of-type(1) {i{ color: #E34F26;}}
             &:nth-of-type(2) {i{ color: #2965F1;}}
@@ -732,5 +730,15 @@ footer {
 
     to {
         transform: translateX(-50%);
+    }
+}
+
+@keyframes jumpy {
+    from {
+        transform: rotateZ(0) scale(1);
+    }
+
+    to {
+        transform: rotateZ(360deg) scale(1.05);
     }
 }
