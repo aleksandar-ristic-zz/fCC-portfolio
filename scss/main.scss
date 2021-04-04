@@ -512,6 +512,7 @@ img {
     }   
 }
 
+/* *** Footer *** */ 
 footer {
     padding: 1.5rem;
     background-color: darken($color-dark-second, 25);
@@ -577,8 +578,7 @@ footer {
 
     100% {
         transform: translate(0, 0);
-    }
-    
+    } 
 }
 
 @keyframes slide {
