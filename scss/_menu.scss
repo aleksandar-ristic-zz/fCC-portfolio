@@ -1,4 +1,6 @@
 header {
+    position: fixed;
+    width: 100%;
     margin: 0 auto;
     padding: 0 5rem;
 
@@ -9,6 +11,7 @@ header {
 
 .logo {
     font-weight: 700;
+    font-size: 1.5rem;
 }
 
 .menu-btn {
@@ -19,13 +22,18 @@ header {
     display: flex;
 
     .nav-item {
-        margin-right: .5rem;
+        margin-right: 1rem;
+        font-size: 1.2rem;
 
         &.current {
             a.nav-link {
                 color: lighten($color-light-main, 25);
             }
             
+        }
+
+        &:nth-last-of-type() {
+            margin-right: 0;
         }
     }
 }
